@@ -1,26 +1,16 @@
 import {ClickableButton} from "./ClickableButton.tsx";
 import {LogViewer} from "./LogViewer/LogViewer.tsx";
-import {user} from "./user.ts";
+import {user} from "../utility/user.ts";
+import ThemeToggler from "./ThemeToggler.tsx";
+
 
 const App = () => {
-	// does not need to be state because the dark update happens automatically
-	let darkMode = false;
-	const rootDocument = document.getElementById("root")!
-	const toggleDarkMode = () => {
-		darkMode = !darkMode;
-		if (darkMode) {
-			rootDocument.classList.add("dark")
-		} else {
-			rootDocument.classList.remove("dark")
-		}
-	}
+	
+	
 	return (
 		<div className="h-full flex flex-col gap-5 p-10 items-center bg-gradient-45 from-purple-200 to-sky-300
 		        dark:from-gray-800 dark:to-violet-950">
-			<button
-				className="fixed top-5 right-5 bg-gray-500 hover:bg-gray-600 active:bg-gray-700 p-4 text-lg rounded-md text-white"
-				onClick={() => toggleDarkMode()}>Toggle Dark mode
-			</button>
+			<ThemeToggler />
 			<h1 className="text-2xl font-bold dark:text-white"> Logging Project</h1>
 			<div className="flex gap-5">
 				<ClickableButton text="Button 1"/>
@@ -42,7 +32,6 @@ const App = () => {
 				className="grow w-1/2 px-4 py-2 overflow-scroll rounded-md bg-slate-600 shadow-lg shadow-slate-900 dark:bg-gray-800 dark:shadow-xl dark:shadow-gray-950">
 				<LogViewer/>
 			</div>
-		
 		</div>
 	)
 }

@@ -1,5 +1,5 @@
-import {socketConnection, socketMessages} from "./socketConnection.ts";
-import {user} from "./user.ts";
+import {socketConnection, socketMessages} from "../utility/socketConnection.ts";
+import {user} from "../utility/user.ts";
 
 type ClickableButtonProps = {
 	text: string

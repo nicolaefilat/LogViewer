@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    --anim-duration: 0.2s
 }
 
 body {
@@ -15,4 +16,58 @@ body {
 #root {
     height: 100vh;
     white-space: pre-wrap;
+}
+
+.sun{
+    opacity: 0;
+}
+.sun-animation {
+    position: relative;
+    z-index: 1;
+
+    animation-name: sun-animation;
+    animation-fill-mode: forwards;
+    animation-duration: var(--anim-duration);
+}
+
+.animation-reverse {
+    animation-direction: reverse;
+}
+
+@keyframes sun-animation {
+    0% {
+        left: 0;
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    100% {
+        left: calc(50% + 0.5em);
+        opacity: 0;
+    }
+}
+
+
+
+.moon-animation {
+    position: relative;
+    animation-name: moon-animation;
+    animation-fill-mode: forwards;
+    animation-duration: var(--anim-duration);
+}
+
+
+
+@keyframes moon-animation {
+    0% {
+        opacity: 0;
+        left: calc(-50% - 0.5em);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        left: 0;
+    }
 }

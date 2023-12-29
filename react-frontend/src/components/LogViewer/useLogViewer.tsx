@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {user} from "../user.ts";
-import {API_HTTP_URL, socketConnection, socketMessages} from "../socketConnection.ts";
+import {user} from "../../utility/user.ts";
+import {API_HTTP_URL, socketConnection, socketMessages} from "../../utility/socketConnection.ts";
 
 
 const useLogViewer = () => {
