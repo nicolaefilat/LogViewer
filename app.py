@@ -1,18 +1,15 @@
 import random
+import uuid
 
 from flask import Flask, request, Response
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-import uuid
+user_id_dictionary: dict[uuid, list[str]] = {}
 
-user_id_dictionary = {}
-
-BUTTON_RESPONSE_STRING = "button_response"
-BUTTON_CLICK_STRING = "button_event"
+BUTTON_EVENT = "button_event"
 
 
 @app.route("/get_session")
@@ -28,13 +25,12 @@ def get_messages():
     if not user_id_param:
         return Response(status=400)
     user_id = uuid.UUID(user_id_param)
-    print(user_id_dictionary, user_id)
     if user_id not in user_id_dictionary:
         return Response("No such user", status=404)
     return user_id_dictionary[user_id]
 
 
-@socketio.on(BUTTON_CLICK_STRING)
+@socketio.on(BUTTON_EVENT)
 def get_random_choice(json):
     app.logger.info(f'received json {json} on channel button_event')
 
@@ -50,7 +46,6 @@ def get_random_choice(json):
 
     user_id = uuid.UUID(user_id_param)
 
-
     if user_id not in user_id_dictionary:
         return Response("No such user", status=404)
 
@@ -60,12 +55,11 @@ def get_random_choice(json):
     choice_padded = choice.ljust(max_length)
     message = f"{choice_padded} - {button_name}"
 
-
     user_id_dictionary[user_id].append(message)
     app.logger.info(f"The user id {user_id_param} will receive this message: '{message}'")
 
-    emit(BUTTON_RESPONSE_STRING, message)
+    emit(BUTTON_EVENT, message)
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, log_output=True, use_reloader=True)
