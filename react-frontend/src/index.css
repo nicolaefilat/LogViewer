@@ -10,11 +10,11 @@
 }
 
 body {
-    height: 100vh;
+    height: 100svh;
 }
 
 #root {
-    height: 100vh;
+    height: 100svh;
     white-space: pre-wrap;
 }
 
