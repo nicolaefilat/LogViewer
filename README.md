@@ -15,9 +15,7 @@
 The frontend should look like this:
 ![image](https://github.com/nicolaefilat/LogViwer/assets/35890341/91f771f4-2365-4b74-b6fc-e81a53cf3788)
 
-It is also responsive for mobile devices:
-![image](https://github.com/nicolaefilat/LogViewer/assets/35890341/6a9f3464-aa2f-4843-990d-18f87e4700b1)
-
+It is also responsive for mobile devices too.
 
 ## Setup server
 1. `pip install -r requirements.txt`
