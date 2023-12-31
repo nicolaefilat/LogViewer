@@ -1,22 +1,22 @@
 import {socketConnection, socketMessages} from "../utility/socketConnection.ts";
 import {user} from "../utility/user.ts";
+import {CustomButton} from "./CustomButton.tsx";
 
-type ClickableButtonProps = {
-	text: string
+
+interface ClickableButton {
+	text: string,
+	color: CustomButtonColor
 }
 
-
-export const ClickableButton = (props: ClickableButtonProps) => {
+export const ClickableButton = (props: ClickableButton) => {
 	
 	const sendApiRequest = async () => {
 		const user_id = user.get_user_session()
-		socketConnection.emit(socketMessages.button_click_event, {button: props.text, user_id: user_id});
+		socketConnection.emit(socketMessages.button_event, {button: props.text, user_id: user_id});
 	}
 	
 	return (
-		<button
-			onClick={sendApiRequest}
-			className={`bg-blue-500 hover:bg-blue-600 active:bg-blue-700 p-4 text-2xl rounded-md text-white`}>{props.text}
-		</button>
+		<CustomButton text={props.text} color={props.color} onClick={sendApiRequest}/>
 	)
 }
+

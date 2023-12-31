@@ -12,6 +12,12 @@ export default {
             },
         },
     },
+    safelist: [
+        {
+            pattern: /bg-(red|green|blue)-(500|600|700)/,
+            variants: ['hover', 'active'],
+        },
+    ],
     plugins: [],
     darkMode: "class"
 }
