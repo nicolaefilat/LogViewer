@@ -5,7 +5,7 @@
 
 
 ### Clone repostitory
-`git clone https://github.com/nicolaefilat/LogViwer.git`
+`git clone https://github.com/nicolaefilat/LogViewer.git`
 
 ## Setup frontend   
 1. `cd react-frontend`
