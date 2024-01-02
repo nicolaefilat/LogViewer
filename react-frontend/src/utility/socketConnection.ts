@@ -1,10 +1,10 @@
 import {io} from 'socket.io-client';
 
-const API_HTTP_URL = "/"
-const API_SOCKET_URL = "/"
+const API_HTTP_URL = "http://localhost:5000/"
+const API_SOCKET_URL = "ws://localhost:5000"
 
 const apiFetch = (url: string): Promise<Response> => {
-	return fetch("/api" + url)
+	return fetch(API_HTTP_URL + url)
 }
 
 const socketMessages = {
